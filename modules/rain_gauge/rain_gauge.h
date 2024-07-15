@@ -16,6 +16,7 @@
 //-----------------------------------------------------------------------------
 
 typedef struct RainGauge {
+    Debouncer_t debouncer;
     uint accumulatedRain;
     uint lastRegistrations[MAX_AMOUNT_OF_REGISTERS];
 } RainGauge_t;

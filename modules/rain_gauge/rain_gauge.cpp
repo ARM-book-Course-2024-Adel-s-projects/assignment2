@@ -8,12 +8,15 @@
 // Public Functions
 //-----------------------------------------------------------------------------
 
-void initRainGauge(RainGauge_t* rainGauge) {
+void initRainGauge(RainGauge_t* rainGauge, uint8_t reedSwitchPin) {
     rainGauge->accumulatedRain = 0;
 
     for(int i = 0; i < MAX_AMOUNT_OF_REGISTERS; i++) {
         rainGauge->lastRegistrations[i] = 0;
     }
+
+    rainGauge->debouncer.input = DigitalIn(reedSwitchPin);
+    initDebouncer(&rainGauge->debouncer);
 }
 
 void saveRainMeasure(RainGauge_t* rainGauge) {
@@ -21,5 +24,8 @@ void saveRainMeasure(RainGauge_t* rainGauge) {
 }
 
 void updateRainMeasure(RainGauge_t* rainGauge) {
-    rainGauge->accumulatedRain++;
+    updateDebouncer(&rainGauge->debouncer);
+    if(!RainGauge->debouncer.isADebounce){
+        rainGauge->accumulatedRain++;
+    }
 }
