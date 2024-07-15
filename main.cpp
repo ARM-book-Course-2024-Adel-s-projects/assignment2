@@ -13,7 +13,7 @@ int main() {
     while (true) {
         updateDebouncer(&reedSwitch);
         if(!reedSwitch->isADebounce) {
-            rainGauge.accumulatedRain++;
+            rainGauge.updateRainMeasure();
         }
         thread_sleep_for(DELAY_TIME);
     }
