@@ -52,4 +52,7 @@ void initDebouncer(*Debouncer_t debouncer) {
     } else {
         debouncer->currentState = DOWN;
     }
+
+    debouncer->timer_accumulator = 0;
+    debouncer->isADebounce = true;
 }
