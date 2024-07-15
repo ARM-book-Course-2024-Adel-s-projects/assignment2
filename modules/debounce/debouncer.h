@@ -5,8 +5,14 @@
 // Libraries
 //-----------------------------------------------------------------------------
 
-#include "custom_timer.h"
 #include "mbed.h"
+
+//-----------------------------------------------------------------------------
+// Macros and Defines
+//-----------------------------------------------------------------------------
+
+#define DEBOUNCER_TIME_MS 50
+#define DELAY_TIME 1
 
 //-----------------------------------------------------------------------------
 // Public types
@@ -23,7 +29,7 @@ typedef struct Debouncer {
     bool isADebounce;
     DigitalIn input;
     state_t currentState;
-    Timer_t timer;
+    uint8_t timer_accumulator;
 } Debouncer_t;
 
 //-----------------------------------------------------------------------------
