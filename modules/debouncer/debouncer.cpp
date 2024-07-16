@@ -36,7 +36,7 @@ void updateDebouncer(Debouncer_t* debouncer) {
         
         case RISING:
             if((debouncer->timer_accumulator * DELAY_TIME) >= DEBOUNCER_TIME_MS) {
-                if(!debouncer->input.read()) {
+                if(debouncer->input.read()) {
                     debouncer->currentState = UP;
                     debouncer->isADebounce = false;
                 } else {
