@@ -25,6 +25,6 @@ typedef struct RainGauge {
 // Public Functions Prototypes
 //-----------------------------------------------------------------------------
 
-void initRainGauge(RainGauge_t*);
+void initRainGauge(RainGauge_t*, uint8_t);
 void updateRainMeasure(RainGauge_t*);
 void saveRainMeasure(RainGauge_t*);
