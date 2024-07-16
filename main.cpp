@@ -1,5 +1,6 @@
 #include "debouncer.h"
 #include "rain_gauge.h"
+#include "serial_interface.h"
 #include <mbed.h>
 
 RainGauge_t rainGauge = {
@@ -11,7 +12,8 @@ RainGauge_t rainGauge = {
 int main() {
     initRainGauge(&rainGauge);
     while (true) {
-        updateRainMeasure(&rainGauge);        
+        updateRainMeasure(&rainGauge);
+        uartTask(rainGauge);   
         thread_sleep_for(DELAY_TIME);
     }
 }
