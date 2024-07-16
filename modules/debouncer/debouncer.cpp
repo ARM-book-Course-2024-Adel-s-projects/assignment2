@@ -10,7 +10,7 @@ void updateDebouncer(Debouncer_t* debouncer) {
     switch(debouncer->currentState) {
 
         case UP:
-            if(debouncer->input) {
+            if(debouncer->input.read()) {
                 debouncer->currentState = FALLING;
                 debouncer->timer_accumulator = 0;
             }
@@ -26,7 +26,7 @@ void updateDebouncer(Debouncer_t* debouncer) {
             break;
         
         case DOWN:
-            if(!debouncer->input) {
+            if(!debouncer->input.read()) {
                 debouncer->currentState = RISING;
                 debouncer->timer_accumulator = 0;
             }
