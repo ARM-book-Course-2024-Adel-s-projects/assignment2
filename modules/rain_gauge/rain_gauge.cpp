@@ -14,7 +14,7 @@
 // Private Variables
 //-----------------------------------------------------------------------------
 
-static Debouncer_t reedSwitchDebouncer;
+static Debouncer_t reedSwitchDebouncer = {true, DigitalIn(REED_SWITCH_PIN), 0 {0}};
 static RainGauge_t rainGauge;
 
 //-----------------------------------------------------------------------------
@@ -28,7 +28,7 @@ void initRainGauge() {
         rainGauge.lastRegistrations[i] = 0;
     }
 
-    initDebouncer(&reedSwitchDebouncer, REED_SWITCH_PIN);
+    initDebouncer(&reedSwitchDebouncer);
 }
 
 void saveRainMeasure() {
