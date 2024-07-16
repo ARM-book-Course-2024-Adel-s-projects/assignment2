@@ -18,9 +18,11 @@ void updateDebouncer(Debouncer_t* debouncer) {
         
         case FALLING:
             if((debouncer->timer_accumulator * DELAY_TIME) >= DEBOUNCER_TIME_MS){
-                debouncer->currentState = DOWN;
-            } else {
-                debouncer->currentState = UP;
+                if(!debouncer->input.read()) {
+                    debouncer->currentState = DOWN;
+                } else {
+                    debouncer->currentState = UP;
+                }
             }
             debouncer->timer_accumulator++;
             break;
