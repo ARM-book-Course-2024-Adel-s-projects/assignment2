@@ -14,7 +14,7 @@ void uartTask(RainGauge_t rainGauge)
         switch (receivedChar) {
         case 'R':
             uartUsb.write( "\n", 1);
-            sprintf ( str, "Accumulated tips: %.2f\r\n", rainGauge.accumulatedRain);
+            sprintf ( str, "Accumulated tips: %d\r\n", rainGauge.accumulatedRain);
             stringLength = strlen(str);
             uartUsb.write( str, stringLength);
 
