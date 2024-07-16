@@ -28,6 +28,7 @@ void uartTask(RainGauge_t rainGauge)
 
 static void availableCommands()
 {
+    uartUsb.write( "\n", 1);
     uartUsb.write( "Available commands:\r\n", 21 );
     uartUsb.write( "Press 'R' to get the accumulated tips of the tipping bucket raing gauge.\r\n", 48 );
 }
