@@ -14,7 +14,7 @@
 // Private Variables
 //-----------------------------------------------------------------------------
 
-static Debouncer_t reedSwitchDebouncer = {true, DigitalIn(REED_SWITCH_PIN), 0 {0}};
+static Debouncer_t reedSwitchDebouncer = {true, DigitalIn(REED_SWITCH_PIN), UP, {0}};
 static RainGauge_t rainGauge;
 
 //-----------------------------------------------------------------------------
