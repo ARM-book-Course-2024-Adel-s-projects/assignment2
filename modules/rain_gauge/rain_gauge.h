@@ -1,3 +1,6 @@
+#ifndef _RAIN_GAUGE_
+#define _RAIN_GAUGE_
+
 //-----------------------------------------------------------------------------
 // Libraries
 //-----------------------------------------------------------------------------
@@ -25,6 +28,8 @@ typedef struct RainGauge {
 // Public Functions Prototypes
 //-----------------------------------------------------------------------------
 
-void initRainGauge(RainGauge_t*, uint8_t);
+void initRainGauge(RainGauge_t*, PinName);
 void updateRainMeasure(RainGauge_t*);
 void saveRainMeasure(RainGauge_t*);
+
+#endif

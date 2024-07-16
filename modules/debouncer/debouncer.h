@@ -35,6 +35,7 @@ typedef struct Debouncer {
 //-----------------------------------------------------------------------------
 // Public Functions
 //-----------------------------------------------------------------------------
-void updateDebouncer(*Debouncer_t);
-void initDebouncer(*Debouncer_t);
+void updateDebouncer(Debouncer_t*);
+void initDebouncer(Debouncer_t*);
+
 #endif

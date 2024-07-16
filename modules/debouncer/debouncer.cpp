@@ -4,7 +4,7 @@
 // Public Functions
 //-----------------------------------------------------------------------------
 
-void updateDebouncer(*Debouncer_t debouncer) {
+void updateDebouncer(Debouncer_t* debouncer) {
     debouncer->isADebounce = true;
     
     switch(debouncer->currentState) {
@@ -46,7 +46,7 @@ void updateDebouncer(*Debouncer_t debouncer) {
     }
 }
 
-void initDebouncer(*Debouncer_t debouncer) {
+void initDebouncer(Debouncer_t* debouncer) {
     if(debouncer->input) {
         debouncer->currentState = UP;
     } else {
