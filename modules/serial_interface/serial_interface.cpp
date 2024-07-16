@@ -4,7 +4,7 @@ static void availableCommands(void);
 
 static UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
 
-void uartTask(RainGauge_t rainGauge)
+void uartTask()
 {
     char receivedChar = '\0';
     char str[100];
@@ -14,7 +14,7 @@ void uartTask(RainGauge_t rainGauge)
         switch (receivedChar) {
         case 'R':
             uartUsb.write( "\n", 1);
-            sprintf ( str, "Accumulated tips: %d\r\n", rainGauge.accumulatedRain);
+            sprintf ( str, "Accumulated tips: %d\r\n", getAccumulatedRain());
             stringLength = strlen(str);
             uartUsb.write( str, stringLength);
 

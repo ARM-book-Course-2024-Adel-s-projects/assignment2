@@ -5,26 +5,43 @@
 #include "rain_gauge.h"
 
 //-----------------------------------------------------------------------------
+// Defines and Macros
+//-----------------------------------------------------------------------------
+
+#define REED_SWITCH_PIN D0
+
+//-----------------------------------------------------------------------------
+// Private Variables
+//-----------------------------------------------------------------------------
+
+static Debouncer_t reedSwitchDebouncer;
+static RainGauge_t rainGauge;
+
+//-----------------------------------------------------------------------------
 // Public Functions
 //-----------------------------------------------------------------------------
 
-void initRainGauge(RainGauge_t* rainGauge) {
-    rainGauge->accumulatedRain = 0;
+void initRainGauge() {
+    rainGauge.accumulatedRain = 0;
 
     for(int i = 0; i < MAX_AMOUNT_OF_REGISTERS; i++) {
-        rainGauge->lastRegistrations[i] = 0;
+        rainGauge.lastRegistrations[i] = 0;
     }
 
-    initDebouncer(&rainGauge->debouncer);
+    initDebouncer(&reedSwitchDebouncer, REED_SWITCH_PIN);
 }
 
-void saveRainMeasure(RainGauge_t* rainGauge) {
+void saveRainMeasure() {
 
 }
 
-void updateRainMeasure(RainGauge_t* rainGauge) {
-    updateDebouncer(&rainGauge->debouncer);
-    if(!rainGauge->debouncer.isADebounce){
-        rainGauge->accumulatedRain++;
+void updateRainMeasure() {
+    updateDebouncer(&reedSwitchDebouncer);
+    if(!reedSwitchDebouncer.isADebounce){
+        rainGauge.accumulatedRain++;
     }
+}
+
+unsigned int getAccumulatedRain() {
+    return rainGauge.accumulatedRain;
 }

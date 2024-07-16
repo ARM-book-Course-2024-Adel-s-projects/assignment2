@@ -19,7 +19,6 @@
 //-----------------------------------------------------------------------------
 
 typedef struct RainGauge {
-    Debouncer_t debouncer;
     unsigned int accumulatedRain;
     unsigned int lastRegistrations[MAX_AMOUNT_OF_REGISTERS];
 } RainGauge_t;
@@ -28,8 +27,9 @@ typedef struct RainGauge {
 // Public Functions Prototypes
 //-----------------------------------------------------------------------------
 
-void initRainGauge(RainGauge_t*);
-void updateRainMeasure(RainGauge_t*);
-void saveRainMeasure(RainGauge_t*);
+void initRainGauge();
+void updateRainMeasure();
+void saveRainMeasure();
+unsigned int getAccumulatedRain();
 
 #endif

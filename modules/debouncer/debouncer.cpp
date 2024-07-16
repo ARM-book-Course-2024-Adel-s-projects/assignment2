@@ -48,13 +48,15 @@ void updateDebouncer(Debouncer_t* debouncer) {
     }
 }
 
-void initDebouncer(Debouncer_t* debouncer) {
+void initDebouncer(Debouncer_t* debouncer, PinName pin) {
     if(debouncer->input.read()) {
         debouncer->currentState = UP;
     } else {
         debouncer->currentState = DOWN;
     }
 
+    debouncer->input = DigitalIn(pin);
+    debouncer->input.mode(PullUp);
     debouncer->timer_accumulator = 0;
     debouncer->isADebounce = true;
 }
