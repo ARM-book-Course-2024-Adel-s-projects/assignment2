@@ -11,7 +11,7 @@ void uartTask()
     char receivedChar = '\0';
     char str[100];
 
-    uartUsb.read( &receivedChar, 1 );
+    receivedChar = receiveChar();
     switch (receivedChar) {
     case 'R':
         sprintf ( str, "Accumulated tips: %d\r\n", getAccumulatedRain());
