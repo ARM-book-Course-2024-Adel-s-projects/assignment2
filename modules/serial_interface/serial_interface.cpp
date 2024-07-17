@@ -70,16 +70,19 @@ static void configureDateAndtime() {
     readString(year, 4);
 
     writeSerial("Type 2 digits for the month (MM):");
-    readString(month, 3);
+    readString(month, 2);
 
     writeSerial("Type 2 digits for the day (DD):");
-    readString(day, 3);
+    readString(day, 2);
+
+    writeSerial("Type 2 digits for the hour (hh):");
+    readString(hour, 2);
 
     writeSerial("Type 2 digits for the minute (mm):");
-    readString(minute, 3);
+    readString(minute, 2);
 
     writeSerial("Type 2 digits for the second (ss):");
-    readString(second, 3);
+    readString(second, 2);
 
     setDateAndTime( atoi(year), atoi(month), atoi(day), 
         atoi(hour), atoi(minute), atoi(second) );
