@@ -102,7 +102,5 @@ static void readString(char* str, int strLength) {
 }
 
 static void getCurrentDateAndTime() {
-    char str[100] = "";
-    str = getDateAndTime();
-    writeSerial(str);
+    writeSerial(getDateAndTime());
 }
