@@ -3,6 +3,6 @@
 
 #include "rain_gauge.h"
 
-void uartTask(RainGauge_t);
+void uartTask();
 
 #endif
