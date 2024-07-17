@@ -2,6 +2,7 @@
 
 static void availableCommands(void);
 static char receiveChar(void);
+static void writeSerial(const char*);
 
 static UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
 
@@ -9,7 +10,7 @@ void uartTask()
 {
     char receivedChar = '\0';
     char str[100];
-    
+
     uartUsb.read( &receivedChar, 1 );
     switch (receivedChar) {
     case 'R':
