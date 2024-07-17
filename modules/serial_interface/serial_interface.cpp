@@ -67,19 +67,19 @@ static void configureDateAndtime() {
     writeSerial("Configuring date and time: ");
     
     writeSerial("Type 4 digits for the year (YYYY):");
-    readString(&year, 4);
+    readString(year, 4);
 
     writeSerial("Type 2 digits for the month (MM):");
-    readString(&month, 3);
+    readString(month, 3);
 
     writeSerial("Type 2 digits for the day (DD):");
-    readString(&day, 3);
+    readString(day, 3);
 
     writeSerial("Type 2 digits for the minute (mm):");
-    readString(&minute, 3);
+    readString(minute, 3);
 
     writeSerial("Type 2 digits for the second (ss):");
-    readString(&second, 3);
+    readString(second, 3);
 
     setDateAndTime( atoi(year), atoi(month), atoi(day), 
         atoi(hour), atoi(minute), atoi(second) );
@@ -97,7 +97,6 @@ static void availableCommands()
 static void readString(char* str, int strLength) {
     for(int strIndex = 0; strIndex < strLength; strIndex++) {
         uartUsb.read(&str[strIndex], 1);
-        uartUsb.write(&str[strIndex], 1);
     }
     str[strLength] = '\0';
 }
