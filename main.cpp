@@ -6,7 +6,8 @@
 int main() {
     initRainGauge();
     while (true) {
-        updateRainMeasure();  
+        updateRainMeasure();
+        uartTask();  
         thread_sleep_for(DELAY_TIME);
     }
 }
