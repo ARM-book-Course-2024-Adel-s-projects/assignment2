@@ -1,6 +1,7 @@
 #include "serial_interface.h"
 
 static void availableCommands(void);
+static char receiveChar(void);
 
 static UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
 
@@ -8,22 +9,38 @@ void uartTask()
 {
     char receivedChar = '\0';
     char str[100];
-    int stringLength;
-    if( uartUsb.readable() ) {
-        uartUsb.read( &receivedChar, 1 );
-        switch (receivedChar) {
-        case 'R':
-            uartUsb.write( "\n", 1);
-            sprintf ( str, "Accumulated tips: %d\r\n", getAccumulatedRain());
-            stringLength = strlen(str);
-            uartUsb.write( str, stringLength);
+    
+    uartUsb.read( &receivedChar, 1 );
+    switch (receivedChar) {
+    case 'R':
+        sprintf ( str, "Accumulated tips: %d\r\n", getAccumulatedRain());
+        writeSerial(str);
+        break;
 
-        default:
-            availableCommands();
-            break;
+    case '\0':
+        break;
 
-        }
+    default:
+        availableCommands();
+        break;
+
     }
+    
+}
+
+static void writeSerial(const char* message) {
+    int stringLength;
+    uartUsb.write("\n", 1);
+    stringLength = strlen(message);
+    uartUsb.write(message, stringLength);
+}
+
+static char receiveChar() {
+    char receivedChar = '\0';
+    if(uartUsb.readable()) {
+        uartUsb.read(&receivedChar, 1);
+    }
+    return receivedChar;
 }
 
 static void availableCommands()
