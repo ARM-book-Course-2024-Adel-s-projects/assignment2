@@ -24,7 +24,7 @@ static uint8_t registrationsIndex;
 
 void initRainGauge() {
     rainGauge.accumulatedRain = 0;
-    rainGauge.date = getDateTimeFromEpoch(time(NULL));
+    rainGauge.date = time(NULL);
     registrationsIndex = 0;
 }
 
@@ -35,7 +35,7 @@ void saveRainMeasure() {
 
 void resetRainGauge() {
     rainGauge.accumulatedRain = 0;
-    rainGauge.date = getDateTimeFromEpoch(time(NULL));
+    rainGauge.date = time(NULL);
 }
 
 void updateRainMeasure() {
@@ -55,6 +55,14 @@ unsigned int getAccumulatedRain() {
 }
 
 bool isSameDate() {
-    DateTime_t timeNow = getDateTimeFromEpoch(time(NULL));
-    return (rainGauge.date.year == timeNow.year && rainGauge.date.month == timeNow.month && rainGauge.date.day == timeNow.day);
+    time_t timeNow = time(NULL);
+    return ((rainGauge.epochTime / SECONDS_IN_A_DAY) == (rainGauge.epochTime / SECONDS_IN_A_DAY));
+}
+
+RainGauge_t getCurrentDayRain() {
+    return rainGauge;
+}
+
+RainGauge_t* getAllRegistrations() {
+    return lastRegistrations;
 }

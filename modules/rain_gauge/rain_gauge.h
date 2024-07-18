@@ -14,6 +14,7 @@
 //-----------------------------------------------------------------------------
 
 #define MAX_AMOUNT_OF_REGISTERS 100
+#define SECONDS_IN_A_DAY 86400
 
 //-----------------------------------------------------------------------------
 // Types
@@ -21,7 +22,7 @@
 
 typedef struct RainGauge {
     unsigned int accumulatedRain;
-    DateTime_t date;
+    time_t epochTime;
 } RainGauge_t;
 
 //-----------------------------------------------------------------------------
@@ -34,5 +35,7 @@ void saveRainMeasure(void);
 void resetRainGauge(void);
 unsigned int getAccumulatedRain(void);
 bool isSameDate(void);
+RainGauge_t* getAllRegistrations(void);
+RainGauge_t getCurrentDayRain(void);
 
 #endif

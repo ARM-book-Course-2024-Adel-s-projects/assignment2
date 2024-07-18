@@ -6,7 +6,9 @@ static void writeSerial(const char*);
 static void configureDateAndtime(void);
 static void readString(char*, int);
 static void getCurrentDateAndTime(void);
-
+static void logAllRegistrations(void);
+static void logRegistration(RainGauge_t rainGauge);
+static void logCurrentRegistration(void);
 
 static UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
 
@@ -106,4 +108,25 @@ static void readString(char* str, int strLength) {
 
 static void getCurrentDateAndTime() {
     writeSerial(getDateAndTime());
+}
+
+static void logRegistration(RainGauge_t rainGauge) {
+    writeSerial(ctime(rainGauge.epochTime));
+    char str[100];
+
+    sprintf(str, "Acumulated tips: %d", rainGauge.accumulatedRain);
+    writeSerial(str);
+}
+
+static void logAllRegistrations() {
+    RainGauge_t* lastRegistrations = getAllRegistrations();
+
+    for(int i = 0; i < MAX_AMOUNT_OF_REGISTERS; i++) {
+        logRegistration(lastRegistrations[i]);
+    }
+}
+
+static void logCurrentRegistration() {
+    RainGauge_t currentRegistration = getCurrentDayRain();
+    logRegistration(currentRegistration);
 }
