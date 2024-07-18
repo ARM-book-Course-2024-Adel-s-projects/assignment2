@@ -33,5 +33,6 @@ void updateRainMeasure(void);
 void saveRainMeasure(void);
 void resetRainGauge(void);
 unsigned int getAccumulatedRain(void);
+bool isSameDate(void);
 
 #endif

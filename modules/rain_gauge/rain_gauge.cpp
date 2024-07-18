@@ -14,7 +14,7 @@
 // Private Variables
 //-----------------------------------------------------------------------------
 
-static Debouncer_t reedSwitchDebouncer = {true, DigitalIn(REED_SWITCH_PIN), UP, {0}};
+static Debouncer_t reedSwitchDebouncer = {true, DigitalIn(REED_SWITCH_PIN), UP};
 static RainGauge_t rainGauge;
 static RainGauge_t lastRegistrations[MAX_AMOUNT_OF_REGISTERS];
 static uint8_t registrationsIndex;
@@ -41,7 +41,7 @@ void resetRainGauge() {
 void updateRainMeasure() {
     updateDebouncer(&reedSwitchDebouncer);
     if(!reedSwitchDebouncer.isADebounce){
-        if isSameDate() {
+        if(isSameDate()) {
             rainGauge.accumulatedRain++;
         } else {
             saveRainMeasure();
@@ -55,6 +55,6 @@ unsigned int getAccumulatedRain() {
 }
 
 bool isSameDate() {
-    DateTime_t timeNow = getDateTimeFromEpoch(time(NULL))
-    return (rainGauge.date.year == timeNow.year && rainGauge.date.month == timeNow.month && rainGauge.date.day == timeNow.day)
+    DateTime_t timeNow = getDateTimeFromEpoch(time(NULL));
+    return (rainGauge.date.year == timeNow.year && rainGauge.date.month == timeNow.month && rainGauge.date.day == timeNow.day);
 }
