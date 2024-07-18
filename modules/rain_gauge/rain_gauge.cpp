@@ -24,7 +24,7 @@ static uint8_t registrationsIndex;
 
 void initRainGauge() {
     rainGauge.accumulatedRain = 0;
-    rainGauge.date = time(NULL);
+    rainGauge.epochTime = time(NULL);
     registrationsIndex = 0;
 }
 
@@ -35,7 +35,7 @@ void saveRainMeasure() {
 
 void resetRainGauge() {
     rainGauge.accumulatedRain = 0;
-    rainGauge.date = time(NULL);
+    rainGauge.epochTime = time(NULL);
 }
 
 void updateRainMeasure() {
