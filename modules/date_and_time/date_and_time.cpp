@@ -31,7 +31,7 @@ void setDateAndTime(int year, int month, int day,
 
 DateTime_t getDateTimeFromEpoch(time_t epoch) {
     struct tm *timeinfo;
-    struct DateTime_t dt;
+    DateTime_t dt;
 
     timeinfo = localtime(epoch);
 
