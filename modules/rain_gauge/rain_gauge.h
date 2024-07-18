@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------------
 
 #include "debouncer.h"
+#include "date_and_time.h"
 #include "mbed.h"
 
 //-----------------------------------------------------------------------------
@@ -20,16 +21,17 @@
 
 typedef struct RainGauge {
     unsigned int accumulatedRain;
-    unsigned int lastRegistrations[MAX_AMOUNT_OF_REGISTERS];
+    DateTime_t date;
 } RainGauge_t;
 
 //-----------------------------------------------------------------------------
 // Public Functions Prototypes
 //-----------------------------------------------------------------------------
 
-void initRainGauge();
-void updateRainMeasure();
-void saveRainMeasure();
-unsigned int getAccumulatedRain();
+void initRainGauge(void);
+void updateRainMeasure(void);
+void saveRainMeasure(void);
+void resetRainGauge(void);
+unsigned int getAccumulatedRain(void);
 
 #endif
