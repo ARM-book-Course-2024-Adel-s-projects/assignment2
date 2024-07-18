@@ -26,6 +26,7 @@ void initRainGauge() {
     rainGauge.accumulatedRain = 0;
     rainGauge.epochTime = time(NULL);
     registrationsIndex = 0;
+    initDebouncer(&reedSwitchDebouncer);
 }
 
 void saveRainMeasure() {
