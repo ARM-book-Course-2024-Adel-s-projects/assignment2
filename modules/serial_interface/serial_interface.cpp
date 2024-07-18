@@ -1,5 +1,5 @@
 #include "serial_interface.h"
-
+#include <ctime>
 static void availableCommands(void);
 static char receiveChar(void);
 static void writeSerial(const char*);
@@ -111,7 +111,7 @@ static void getCurrentDateAndTime() {
 }
 
 static void logRegistration(RainGauge_t rainGauge) {
-    writeSerial(ctime(rainGauge.epochTime));
+    writeSerial(ctime(&rainGauge.epochTime));
     char str[100];
 
     sprintf(str, "Acumulated tips: %d", rainGauge.accumulatedRain);
