@@ -30,10 +30,10 @@ void setDateAndTime(int year, int month, int day,
 }
 
 DateTime_t getDateTimeFromEpoch(time_t epoch) {
-    struct tm *timeinfo;
+    std::tm *timeinfo;
     DateTime_t dt;
 
-    timeinfo = localtime(epoch);
+    timeinfo = std::localtime(&epoch);
 
     dt.year = timeinfo->tm_year + 1900;
     dt.month = timeinfo->tm_mon + 1;
