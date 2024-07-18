@@ -3,12 +3,6 @@
 
 #include "mbed.h"
 
-time_t getEpochTime(void);
-char* getDateAndTime(void);
-void setDateAndTime(int year, int month, int day,
-                    int hour, int minute, int second);
-DateTime_t getDateTimeFromEpoch(time_t epoch);
-
 typedef struct DateTime {
     int year;
     int day;
@@ -17,5 +11,11 @@ typedef struct DateTime {
     int minute;
     int second;
 } DateTime_t;
+
+time_t getEpochTime(void);
+char* getDateAndTime(void);
+void setDateAndTime(int year, int month, int day,
+                    int hour, int minute, int second);
+DateTime_t getDateTimeFromEpoch(time_t epoch);
 
 #endif
