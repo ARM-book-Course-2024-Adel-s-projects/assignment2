@@ -31,6 +31,14 @@ void uartTask()
     case '3':
         getCurrentDateAndTime();
         break;
+    
+    case '4':
+        logCurrentRegistration();
+        break;
+
+    case '5':
+        logAllRegistrations();
+        break;
 
     case '\0':
         break;
