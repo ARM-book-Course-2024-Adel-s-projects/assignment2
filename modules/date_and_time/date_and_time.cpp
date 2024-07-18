@@ -1,4 +1,5 @@
 #include "date_and_time.h"
+#include <time.h>
 
 time_t getEpochTime() {
     return time(NULL);
@@ -26,4 +27,20 @@ void setDateAndTime(int year, int month, int day,
 
     set_time( mktime( &rtcTime ) );
 
+}
+
+DateTime_t getDateTimeFromEpoch(time_t epoch) {
+    struct tm *timeinfo;
+    struct DateTime_t dt;
+
+    timeinfo = localtime(epoch);
+
+    dt.year = timeinfo->tm_year + 1900;
+    dt.month = timeinfo->tm_mon + 1;
+    dt.dat = timeinfo->tm_mday;
+    dt.hour = timeinfo->tm_hour;
+    dt.minute = timeinfo->tm_min;
+    dt.second = timeinfo->tm_sec;
+
+    return dt;
 }
