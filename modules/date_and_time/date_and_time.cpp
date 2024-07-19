@@ -1,5 +1,9 @@
+//=====[Includes]=============================================================
+
 #include "date_and_time.h"
 #include <ctime>
+
+//=====[Functions Implementation]=============================================
 
 time_t getEpochTime() {
     return time(NULL);

@@ -1,5 +1,10 @@
+//=====[Includes]=============================================================
+
 #include "serial_interface.h"
 #include <ctime>
+
+//=====[Private Function Declarations]========================================
+
 static void availableCommands(void);
 static char receiveChar(void);
 static void writeSerial(const char*);
@@ -10,7 +15,11 @@ static void logAllRegistrations(void);
 static void logRegistration(RainGauge_t rainGauge);
 static void logCurrentRegistration(void);
 
+//=====[Private Variables]====================================================
+
 static UnbufferedSerial uartUsb(USBTX, USBRX, 115200);
+
+//=====[Public Functions Implementation]======================================
 
 void uartTask()
 {
@@ -50,6 +59,8 @@ void uartTask()
     }
     
 }
+
+//=====[Private Functions Implementation]=====================================
 
 static void writeSerial(const char* message) {
     int stringLength;
@@ -103,8 +114,12 @@ static void configureDateAndtime() {
 static void availableCommands()
 {
     uartUsb.write( "\n", 1);
-    uartUsb.write( "Available commands:\r\n", 21 );
-    uartUsb.write( "Press 'R' to get the accumulated tips of the tipping bucket raing gauge.\r\n", 48 );
+    writeSerial( "Available commands:\r\n");
+    writeSerial( "Press '1' to get the accumulated tips of the tipping bucket raing gauge.\r\n");
+    writeSerial( "Press '2' to configure Date and Time.\r\n");
+    writeSerial( "Press '3' to get the current date and time of the system.\r\n");
+    writeSerial( "Press '4' to get the current rain gauge registration (date and tips).\r\n");
+    writeSerial( "Press '5' to log the last 100 registrations of the system.\r\n");
 }
 
 static void readString(char* str, int strLength) {

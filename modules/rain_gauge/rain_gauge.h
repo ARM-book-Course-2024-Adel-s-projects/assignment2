@@ -1,34 +1,28 @@
+//=====[Include Guards - Begin]===============================================
+
 #ifndef _RAIN_GAUGE_
 #define _RAIN_GAUGE_
 
-//-----------------------------------------------------------------------------
-// Libraries
-//-----------------------------------------------------------------------------
+//=====[Includes]=============================================================
 
 #include "debouncer.h"
 #include "date_and_time.h"
 #include "mbed.h"
 #include <ctime>
 
-//-----------------------------------------------------------------------------
-// Defines and Macros
-//-----------------------------------------------------------------------------
+//=====[Macros]===============================================================
 
 #define MAX_AMOUNT_OF_REGISTERS 100
 #define SECONDS_IN_A_DAY 86400
 
-//-----------------------------------------------------------------------------
-// Types
-//-----------------------------------------------------------------------------
+//=====[Public Data Types]====================================================
 
 typedef struct RainGauge {
     unsigned int accumulatedRain;
     time_t epochTime;
 } RainGauge_t;
 
-//-----------------------------------------------------------------------------
-// Public Functions Prototypes
-//-----------------------------------------------------------------------------
+//=====[Function Declarations]================================================
 
 void initRainGauge(void);
 void updateRainMeasure(void);
@@ -38,5 +32,7 @@ unsigned int getAccumulatedRain(void);
 bool isSameDate(void);
 RainGauge_t* getAllRegistrations(void);
 RainGauge_t getCurrentDayRain(void);
+
+//=====[Include Guards - End]=================================================
 
 #endif
