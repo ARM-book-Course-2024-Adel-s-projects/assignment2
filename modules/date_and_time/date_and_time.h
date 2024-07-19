@@ -25,10 +25,35 @@ typedef struct DateTime {
 
 //=====[Function Declarations]================================================
 
+/**
+* @brief Get the current date and time as epoch
+* @return A time_t (epoch time)
+*/
 time_t getEpochTime(void);
+
+/**
+* @brief Get a string with the current date and time.
+* @return A string with the current date and time.
+*/
 char* getDateAndTime(void);
+
+/**
+* @brief Set the date and time of the system.
+* @param year An integer representing the year.
+* @param month An integer representing the month.
+* @param day An integer representing the day.
+* @param hour An integer representing the hour.
+* @param minute An integer representing the minute.
+* @param second An integer representing the second.
+*/
 void setDateAndTime(int year, int month, int day,
                     int hour, int minute, int second);
+
+/**
+* @brief Get a DateTime_t object from an epoch.
+* @return A DateTime_t object to easly handle the date and time.
+* @param epoch A time_t representing the date and time in epoch.
+*/
 DateTime_t getDateTimeFromEpoch(time_t epoch);
 
 //=====[Include Guards - End]=================================================
