@@ -9,6 +9,11 @@
 
 //=====[Public Data Types]====================================================
 
+/** \struct RainGauge
+*
+* @brief This struct helps to easly manage the date and time when needed.
+*
+*/
 typedef struct DateTime {
     int year;
     int day;

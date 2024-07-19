@@ -14,6 +14,11 @@
 
 //=====[Public Data Types]====================================================
 
+/** \enum state_t
+*
+* @brief Represents the state of the debouncer FSM.
+*
+*/
 typedef enum {
     DOWN,
     FALLING,
@@ -21,6 +26,11 @@ typedef enum {
     UP,
 } state_t;
 
+/** \struct Debouncer
+*
+* @brief Holds information needed for the debouncer.
+*
+*/
 typedef struct Debouncer {
     bool isADebounce;
     DigitalIn input;

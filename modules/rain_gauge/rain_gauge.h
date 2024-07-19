@@ -17,6 +17,11 @@
 
 //=====[Public Data Types]====================================================
 
+/** \struct RainGauge
+*
+* @brief Holds information about the accumulated rain and the date of
+* registration
+*/
 typedef struct RainGauge {
     unsigned int accumulatedRain;
     time_t epochTime;
