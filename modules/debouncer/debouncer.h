@@ -40,7 +40,16 @@ typedef struct Debouncer {
 
 //=====[Function Declarations]================================================
 
+/**
+* @brief Updates the FSM of the debouncer.
+* @param debouncer Receives a Debouncer_t that needs to be updated.
+*/
 void updateDebouncer(Debouncer_t*);
+
+/**
+* @brief Initializes the debouncer.
+* @param debouncer Receives a Debouncer_t that needs to be initialized.
+*/
 void initDebouncer(Debouncer_t*);
 
 //=====[Include Guards - End]=================================================
