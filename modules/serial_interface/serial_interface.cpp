@@ -35,6 +35,7 @@ void uartTask()
     
     case '2':
         configureDateAndtime();
+        resetRainGauge();
         break;
     
     case '3':
