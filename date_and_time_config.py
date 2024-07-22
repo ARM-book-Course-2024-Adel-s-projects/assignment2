@@ -61,11 +61,6 @@ def set_date_and_time():
     send_and_receive("2")
     configure_date_and_time()
 
-    send_and_receive("3")
-    time.sleep(2)
-
-    print_date(*get_current_date_and_time())
-
     print("Date and time were configured...")
 
 
